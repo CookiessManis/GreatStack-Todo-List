@@ -27,37 +27,35 @@ export default function Todo() {
     }, 100);
   }, [todos]);
   return (
-    <div className="w-[600px] min-h-[732px] rounded-[20px] bg-white m-auto mt-[174px] flex flex-col p-[30px] pb-[30px] mb-[100px]">
-      <div className="mt-[84px] text-[#002765] text-[36px] font-medium leading-[34px]">
-        To-Do List
-      </div>
-      <form onSubmit={add}>
-        <div className="flex justify-center items-center mt-[45px]">
-          <input
-            ref={inputRef}
-            placeholder="add ur task"
-            className="rounded-[50px] bg-[#edeef0] border-none outline-none w-[576px] h-[80px] ps-[35px] text-[20px]"
-          />
-          <div
-            // onClick={() => {
-            //   add();
-            // }}
-            className="rounded-3xl bg-[#002765] text-white w-[187px] h-[80px] flex justify-center items-center px-6 cursor-pointer text-semibold"
-          >
-            Add
+    <div className="px-2">
+      <div className="max-w-screen-sm mx-auto mt-16 px-4 bg-gray-500 rounded-2xl py-12">
+        <div className="text-3xl font-medium text-center mb-8">To-Do List</div>
+        <form onSubmit={add} className="mb-8">
+          <div className="flex items-center">
+            <input
+              ref={inputRef}
+              placeholder="Add your task"
+              className="rounded-full bg-gray-200 flex-grow py-3 px-4 text-lg"
+            />
+            <button
+              type="submit"
+              className="rounded-full bg-blue-600 text-white px-6 py-3 ml-4"
+            >
+              Add
+            </button>
           </div>
+        </form>
+        <div>
+          {todos.map((item, index) => (
+            <TodoItems
+              key={index}
+              text={item.text}
+              no={item.no}
+              display={item.display}
+              setTodos={setTodos}
+            />
+          ))}
         </div>
-      </form>
-      <div>
-        {todos.map((item, index) => (
-          <TodoItems
-            key={index}
-            text={item.text}
-            no={item.no}
-            display={item.display}
-            setTodos={setTodos}
-          />
-        ))}
       </div>
     </div>
   );
