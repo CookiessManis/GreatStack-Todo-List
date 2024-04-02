@@ -1,6 +1,6 @@
-import cross from "./assets/cross.png";
-import tick from "./assets/tick.png";
-import not_tick from "./assets/not_tick.png";
+import cross from "./Assets/cross.png";
+import tick from "./Assets/tick.png";
+import not_tick from "./Assets/not_tick.png";
 
 export default function TodoItems({ no, text, display, setTodos }) {
   const deleteTodo = (no) => {
@@ -26,7 +26,10 @@ export default function TodoItems({ no, text, display, setTodos }) {
 
   return (
     <div className="flex justify-between items-center pt-6 px-2">
-      <div className={`flex p-2 ${display}`} onClick={() => toggle(no)}>
+      <div
+        className={`flex p-2 ${display} cursor-pointer`}
+        onClick={() => toggle(no)}
+      >
         {display === "" ? (
           <img src={not_tick} alt={not_tick} />
         ) : (
